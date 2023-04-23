@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>E_library</title>
+</head>
+
+<!-- the reason why i am work here with css its littel instead of i am using bootstrap fremework-->
+<style>
+    @media (max-width: 390px) {
+        #banner_title{
+            display: none;
+        }
+}
+
+#remove-item:hover{
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    font-weight: bold;
+}
+
+#card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-basis: 33.333333%;
+}
+</style>
+<body style="user-select: none; background-color: rgb(255, 255, 255);" id="bodys">
+
+    <div class="container-fluid" style="background-color:rgb(233, 233, 233);">
+        <div class="row bg-ligher shadow p-2">
+            <div class="col-6 col-md-6 col-lg-6 text-center text-dark">
+               <h2 class="fw-bold text-success"><img src="Assets/png-transparent-computer-icons-book-library-book-cover-data-book-school-removebg-preview.png" alt="logo" class="img-fluid" style="width: 80px; height: 50px;"><span id="banner_title">Library</span></h2>
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-4 col-md-4 col-lg-4 text-center text-primary fw-bold">
+                  <!-- Button trigger modal -->
+                  <!-- <button type="button" class="btn btn-outline-primary text-dark fw-bold mt-2 pe-2 ps-2 mx-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Add ++
+                  </button> -->
+                  <abbr title="click here to apply color mode">
+                    <img src="Assets/mode.png" alt="dark/light mode" class="img-fluid" style="width: 50px; height: 50px; cursor: pointer;" id="dark">
+                  </abbr>  
+                </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+         <div class="row text-center m-5">
+            <div class="col-12 col-md-12 col-lg-12">
+                <h3 class="fw-bold text-primary display-4">Wel<span class="text-primary">come</span><span class="text-danger"> !</span></h3>
+                  <div class="text-lead text-muted display-6">You'll Never Miss Out Anything!</div>
+            </div>
+         </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row text-center m-5">
+           <div class="col-12 col-md-12 col-lg-12">
+                <button class="btn btn-outline-primary text-dark shadow fw-bold pe-5 ps-5 py-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <strong id="add">
+                        Add Book Here
+                    </strong> 
+                </button>
+           </div>
+        </div>
+   </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog"> 
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title fw-bold h3" id="staticBackdropLabel">Adding New Book</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+     <div class="row" style="justify-content: center;">       
+        <div class="col-12">
+            <label for="author" class="text-muted mx-2">Author</label>
+            <input type="text" id="author" class="form-control m-2" placeholder="Author">
+        </div>     
+        <div class="col-12">
+            <label for="title" class="text-muted mx-2">Title</label>
+            <input type="text" id="title" class="form-control m-2" placeholder="Title">
+        </div>
+        <!-- <div class="col-11">
+            <label for="title" class="text-muted mx-2">Title</label>
+            <input type="text" id="title" class="form-control m-2" placeholder="Title">
+        </div>  -->
+
+        <div class="col-12">
+            <label for="pages" class="text-muted mx-2">Pages</label>
+            <input type="number" id="pages" class="form-control m-2" placeholder="Pages">
+        </div>
+        <div class="col-12">
+            <label for="read_or_not" class="text-danger fw-bold mx-2">Have you read it?</label>
+            <!-- <input type="checkbox" id="checkbox" class="m-2"> -->
+            <select name="select" id="read_or_not" class="form-control m-2">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>      
+   </div>
+        </div>
+        <div class="modal-footer bg-warning">
+            <div class="row">
+                <div class="col-12">
+                     <input type="reset" class="btn btn-danger ps-3 pe-3 mx-2" id="reset">
+                     <button type="submit" class="btn btn-primary ps-5 pe-5" id="sub_btn" data-bs-dismiss="modal" onclick="validateForm()">Submit</button>
+                </div>
+            </div>           
+        </div>
+      </div>
+    </div>
+  </div>
+
+<p id="card" class="m-3">
+    <!-- generate the design with css and display the content inside card by using javascript -->
+    <!-- <strong id="card-author"></strong><br><hr>
+    <strong id="card-title"></strong><br><hr>
+    <strong id="card-page"></strong><br><hr>
+    <strong id="card-status"></strong> -->
+</p>
+
+<div class="row m-3" id="box" style="display: none;">
+    <div class="col-md-3 my-2" style="width: 400px; height: 190px;">
+        <div class="card shadow-lg bg-ligher">
+            <!-- <img src="/Odin_Dashboard/Assets/cal.png" class="img-fluid card-img-top" alt="book images"> -->
+            <div class="card-body">
+                <strong id="card-author"></strong><br><hr>
+                <strong id="card-title"></strong><br><hr>
+                <strong id="card-page"></strong><br><hr>
+                <strong id="card-status"></strong>
+            </div>
+            <div class="card-footer p-2" style="text-align: center;">
+                <button class="btn btn-danger w-100" id="remove-item"><strong>Remove</strong></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<ul>
+    <li id="a"></li>
+    <li id="t"></li>
+    <li id="p"></li>
+    <li id="r"></li>
+</ul> -->
+
+<footer>
+   <div class="footer bg-dark shadow p-1">
+        <p class="text-lead text-muted text-light text-center">&copy;2023 All Right Reserved | Developed By Muller_king</p>
+   </div>
+</footer>    
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="App.js"></script>
+</body>
+</html>
